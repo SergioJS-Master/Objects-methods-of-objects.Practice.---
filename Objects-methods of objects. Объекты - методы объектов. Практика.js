@@ -1,5 +1,44 @@
 console.log('================Объекты. Методы объектов===============');
 
+//копирование свойств объекта 
+
+const button = {
+  width: 100,
+  height: 150,
+  color: 'black'
+}
+
+const newButton = {
+  ...button, // (...) оператор разделения объекта на свойства.
+  color: 'red',
+} //если у объекта button есть схожее свойство, например color:, то в случае, если мы укажем ...button в самом
+//конце, то в новой копии объекта свойство сolor  перезапишется с red на black
+
+console.table(button)
+console.table(newButton);
+
+//v.2
+
+const button1 = {
+  width: 100,
+  height: 150,
+  color: 'black'
+}
+const newButton1 = {
+  bacgrounColor: 'blue',
+  margin: '5px'
+}
+
+const newButtonOne = {
+  ...button1, //оператор(...) создает новый объект, и изменения в переменно newButtonOne, не повлияют на переменные 
+  ...newButton1, // выше. Соответственно никаких мутаций не произойдет, за исключением вложенных свойств
+}
+
+console.table(newButtonOne);
+
+
+console.log('____________Cоздание копии объекта и изменение возраста в копии___________');
+
 //создание копии объекта и изменение возраста в копии
 
 const newName = {
@@ -17,8 +56,11 @@ function a (obj) {
     return copyObgNewOne
 }
 const newCopyObgNewOne = a(newName);
-console.log(newCopyObgNewOne.age);
+
 console.log(newName.age);
+console.log(newCopyObgNewOne.age);
+
+console.log('____________создание объекта и интеграция методов, дополнительных свойсв в тело объекта. ___________');
 
 //создание объекта и интеграция методов, дополнительных свойсв в тело объекта. 
 //Также, применение различных флагов и методов Object.getOwnPropertyDescriptors и т.д.
@@ -33,7 +75,8 @@ const newOne = {
 } 
 
 let midlName = 'midlName';
-newOne[midlName] = 'Michailivich';
+newOne[midlName] = 'Michailivich';//обращение к свойству объекта в квадратных сквобках происходит, если мы обращаемся 
+                                  // к свойству состоящего из 2 и более слов и если мы обращаемся к переменной
 
  let disckription = Object.getOwnPropertyDescriptors(newOne);
  console.log(disckription);
@@ -49,6 +92,11 @@ console.log(newOne);
 let disckriptionTwo = Object.getOwnPropertyDescriptors(newOne.name)
 console.log(disckriptionTwo);
 
+//•writable — дескриптор, который задает право на изменение свойства. В противном случае доступно только чтение. Дефолтное значение — true,
+//•enumerable — дескриптор, который разрешает свойству итерироваться в цикле. Дефолтное значение — true,
+//•configurable — дескриптор, который разрешает удалять свойства и изменять флаги. Дефолтное значение — true.
+
+console.log('____________Mетоды this и new___________');
 
 // методы this и new. 
 
@@ -91,6 +139,11 @@ let key = Object.keys(goods)
 let vaL = Object.values(goods)
 let conCat = key.concat(vaL)
 console.log(conCat);
+
+// v.2
+
+let arr = [...Object.keys(goods), ...Object.values(goods)];
+console.log(arr);
 
 console.log('____________Задание №2___________');
 
